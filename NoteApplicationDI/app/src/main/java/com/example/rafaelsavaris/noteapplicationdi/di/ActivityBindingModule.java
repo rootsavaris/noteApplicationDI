@@ -2,6 +2,8 @@ package com.example.rafaelsavaris.noteapplicationdi.di;
 
 import com.example.rafaelsavaris.noteapplicationdi.notes.add.AddEditNoteActivity;
 import com.example.rafaelsavaris.noteapplicationdi.notes.add.AddEditNoteModule;
+import com.example.rafaelsavaris.noteapplicationdi.notes.detail.DetailNoteActivity;
+import com.example.rafaelsavaris.noteapplicationdi.notes.detail.DetailNoteModule;
 import com.example.rafaelsavaris.noteapplicationdi.notes.list.NotesActivity;
 import com.example.rafaelsavaris.noteapplicationdi.notes.list.NotesModule;
 
@@ -22,5 +24,9 @@ public abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector(modules = AddEditNoteModule.class)
     abstract AddEditNoteActivity addEditNoteActivity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = DetailNoteModule.class)
+    abstract DetailNoteActivity detailNoteActivity();
 
 }

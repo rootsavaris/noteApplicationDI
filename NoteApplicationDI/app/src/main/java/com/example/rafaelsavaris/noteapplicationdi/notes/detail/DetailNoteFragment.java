@@ -18,18 +18,25 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.example.rafaelsavaris.noteapplicationdi.R;
+import com.example.rafaelsavaris.noteapplicationdi.di.ActivityScoped;
 import com.example.rafaelsavaris.noteapplicationdi.notes.add.AddEditNoteActivity;
 import com.example.rafaelsavaris.noteapplicationdi.notes.add.AddEditNoteFragment;
+
+import javax.inject.Inject;
+
+import dagger.android.support.DaggerFragment;
 
 /**
  * Created by rafael.savaris on 02/01/2018.
  */
 
-public class DetailNoteFragment extends Fragment implements DetailNoteContract.View {
+@ActivityScoped
+public class DetailNoteFragment extends DaggerFragment implements DetailNoteContract.View {
 
     private static final int REQUEST_EDIT_NOTE = 1;
 
-    private DetailNoteContract.Presenter mPresenter;
+    @Inject
+    DetailNoteContract.Presenter mPresenter;
 
     private TextView mTitle;
 
@@ -37,14 +44,8 @@ public class DetailNoteFragment extends Fragment implements DetailNoteContract.V
 
     private CheckBox mMarkedCheck;
 
-    public static DetailNoteFragment newInstance(){
-        return new DetailNoteFragment();
-    }
-
-    @Override
-    public void setPresenter(DetailNoteContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
+    @Inject
+    public DetailNoteFragment() {}
 
     @Nullable
     @Override

@@ -12,16 +12,18 @@ import com.example.rafaelsavaris.noteapplicationdi.utils.ActivityUtils;
 
 import javax.inject.Inject;
 
+import dagger.android.support.DaggerAppCompatActivity;
+
 /**
  * Created by rafael.savaris on 01/12/2017.
  */
 
-public class DetailNoteActivity extends AppCompatActivity {
+public class DetailNoteActivity extends DaggerAppCompatActivity {
 
     public static final String NOTE_ID = "NOTE_ID";
 
     @Inject
-    NotesRepository mNotesRepository;
+    DetailNoteFragment detailNoteFragmentProvider;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,23 +40,19 @@ public class DetailNoteActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        String noteId = getIntent().getStringExtra(NOTE_ID);
-
         DetailNoteFragment detailNoteFragment = (DetailNoteFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
 
         if (detailNoteFragment == null) {
 
-            detailNoteFragment = DetailNoteFragment.newInstance();
+            detailNoteFragment = detailNoteFragmentProvider;
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
                     detailNoteFragment, R.id.contentFrame);
         }
 
-        new DetailNotePresenter(
-                noteId,
-                mNotesRepository,
-                detailNoteFragment);
+    }
 
+    public DetailNoteActivity() {
     }
 
     @Override

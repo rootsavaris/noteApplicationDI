@@ -39,11 +39,6 @@ public class AddEditNoteFragment extends DaggerFragment implements AddEditNoteCo
     }
 
     @Override
-    public void setPresenter(AddEditNoteContract.Presenter presenter) {
-        mAddEditNotePresenter = presenter;
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         mAddEditNotePresenter.takeView(this);

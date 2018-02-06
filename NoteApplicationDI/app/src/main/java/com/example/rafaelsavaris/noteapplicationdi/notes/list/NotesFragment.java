@@ -149,11 +149,6 @@ public class NotesFragment extends DaggerFragment implements NotesContract.View 
     }
 
     @Override
-    public void setPresenter(NotesContract.Presenter mPresenter){
-        this.mPresenter = mPresenter;
-    }
-
-    @Override
     public void setLoadingIndicator(final boolean active) {
 
         if (getView() == null){

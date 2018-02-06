@@ -5,6 +5,8 @@ import com.example.rafaelsavaris.noteapplicationdi.data.source.NotesDatasource;
 import com.example.rafaelsavaris.noteapplicationdi.data.source.NotesRepository;
 import com.google.common.base.Strings;
 
+import javax.inject.Inject;
+
 /**
  * Created by rafael.savaris on 02/01/2018.
  */
@@ -17,12 +19,10 @@ public class DetailNotePresenter implements DetailNoteContract.Presenter {
 
     private DetailNoteContract.View mView;
 
-    public DetailNotePresenter(String noteId, NotesRepository notesRepository, DetailNoteContract.View view) {
+    @Inject
+    public DetailNotePresenter(String noteId, NotesRepository notesRepository) {
         mNoteId = noteId;
         mNotesRepository = notesRepository;
-        mView = view;
-
-        mView.setPresenter(this);
     }
 
     @Override
